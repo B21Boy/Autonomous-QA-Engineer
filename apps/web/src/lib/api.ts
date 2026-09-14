@@ -1,4 +1,6 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+// Keep browser requests on the frontend origin. Next.js proxies /api to the
+// Nest server, so this also works when the app is opened via a forwarded URL.
+const API_URL = '/api';
 
 export async function apiFetch(path: string, options: RequestInit = {}) {
   const res = await fetch(`${API_URL}${path}`, {
